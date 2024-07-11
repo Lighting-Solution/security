@@ -14,11 +14,12 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public ResponseEntity<?> getEmpALlByAndroid(String URI) {
         WebClient webClient = WebClient.builder() // Ensure this base URL matches the target server's base URL
+                .baseUrl("http://localhost:9000")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
 
         Object result = webClient.get()
-                .uri("http://localhost:9000/api/v1/lighting_solutions/contact/list/all-emp/android")
+                .uri(URI)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
                 .bodyToMono(Object.class)
@@ -33,10 +34,12 @@ public class ContactServiceImpl implements ContactService {
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();
 
-        return webClient.get()
-                .uri("http://localhost:9000/api/v1/lighting_solutions/contact/list/all-personal/android/{id}")
+        Object result = webClient.get()
+                .uri(URI)
+                .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(ResponseEntity.class)
+                .bodyToMono(Object.class)
                 .block();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 }

@@ -37,7 +37,6 @@ public class ContactControllerImpl implements ContactController {
     @Override
     @GetMapping("/list/all-emp/android")
     public ResponseEntity<?> getEmpAllByAndroid(HttpServletRequest request) {
-        System.out.println("호출초훔ㄴㅇ;ㅣㅏ러");
         String requestURI=request.getRequestURI().replace("security/", "");
         String queryString = request.getQueryString();
         String fullURL = requestURI + (queryString != null ? "?" + queryString : "");
@@ -47,7 +46,6 @@ public class ContactControllerImpl implements ContactController {
     @Override
     @GetMapping("/list/all-personal/android")
     public ResponseEntity<?> getPersonalAllByAndroid(HttpServletRequest request) {
-        System.out.println("호출초훔ㄴㅇ;ㅣㅏ러ㄷㅇㅇㅇㅇㄷㅇㄷㅇㄷ");
         String requestURI=request.getRequestURI().replace("security/", "");
         String queryString = request.getQueryString();
         String fullURL = requestURI + (queryString != null ? "?" + queryString : "");
