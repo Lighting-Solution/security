@@ -39,6 +39,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        System.out.println("authenticationProvider()");
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(new BCryptPasswordEncoder()); // 암호화 설정이 필요한 경우
         return provider;
@@ -57,6 +58,7 @@ public class SecurityConfig {
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint(authEntryPoint))
                 .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        System.out.println("securityFilterChain()");
 
         return http.build();
     }
@@ -68,8 +70,8 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         // 출처를 명시적으로 허용
-        config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-        config.setAllowedOrigins(Arrays.asList("*"));
+//        config.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+//        config.setAllowedOrigins(Arrays.asList("http://10.0.2.2:5554"));
         config.setAllowedMethods(Arrays.asList("*"));
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowCredentials(false);
