@@ -60,6 +60,9 @@ public class UserServiceImpl implements UserDetailsService {
         userDTO.setAccountPw(savedUser.getAccountPw());
         userDTO.setEmpName(responseIntra.getEmpName());
         userDTO.setDepartmentId(responseIntra.getDepartmentId());
+        userDTO.setEmpAdmin(responseIntra.getEmpAdmin());
+        userDTO.setDepartmentName(responseIntra.getDepartmentName());
+        userDTO.setEmpEmail(responseIntra.getEmpEmail());
         return userDTO;
     }
 

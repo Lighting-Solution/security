@@ -74,7 +74,10 @@ public class UserControllerImpl implements UserController {
                                 "empId", String.valueOf(saveUserDTO.getEmpId()),
                                 "positionId", String.valueOf(saveUserDTO.getPositionId()),
                                 "empName", saveUserDTO.getEmpName(),
-                                "departmentId", saveUserDTO.getDepartmentId()
+                                "departmentId", saveUserDTO.getDepartmentId(),
+                                "empAdmin" , saveUserDTO.getEmpAdmin(),
+                                "departmentName", saveUserDTO.getDepartmentName(),
+                                "empEmail" , saveUserDTO.getEmpEmail()
                         ));
             } else {
                 System.out.println("password not match");
