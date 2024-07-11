@@ -5,6 +5,7 @@ import com.ls.security.contact.service.ContactService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,6 +35,7 @@ public class ContactControllerImpl implements ContactController {
     }
 
     @Override
+    @GetMapping("/list/all-emp/android")
     public ResponseEntity<?> getEmpAllByAndroid(HttpServletRequest request) {
         String requestURI=request.getRequestURI().replace("security/", "");
         String queryString = request.getQueryString();
@@ -42,6 +44,7 @@ public class ContactControllerImpl implements ContactController {
     }
 
     @Override
+    @GetMapping("/list/all-personal/android")
     public ResponseEntity<?> getPersonalAllByAndroid(HttpServletRequest request) {
         String requestURI=request.getRequestURI().replace("security/", "");
         String queryString = request.getQueryString();
