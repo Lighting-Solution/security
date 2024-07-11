@@ -18,6 +18,6 @@ public class AndroidControllerImpl implements AndroidController {
     }
 
 
-    // Android -> security -> intranet (id,pw) -> security 똑같이 비교
+
 
 }
