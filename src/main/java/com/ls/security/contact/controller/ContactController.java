@@ -69,7 +69,7 @@ public interface ContactController {
      * @return "success" 또는 "fail"
      */
     @PostMapping("/personal-contact")
-    ResponseEntity<String> createPersonalContact(@RequestBody Map<?, ?> data, HttpServletRequest request);
+    ResponseEntity<?> createPersonalContact(@RequestBody Map<?, ?> data, HttpServletRequest request);
 
     /**
      * @apiNote 개인 연락처 수정

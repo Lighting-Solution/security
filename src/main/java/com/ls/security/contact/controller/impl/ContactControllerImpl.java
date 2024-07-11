@@ -5,9 +5,7 @@ import com.ls.security.contact.service.ContactService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.util.List;
@@ -73,17 +71,29 @@ public class ContactControllerImpl implements ContactController {
     }
 
     @Override
-    public ResponseEntity<String> createPersonalContact(Map<?, ?> data, HttpServletRequest request) {
+    @PostMapping("/personal-contact")
+    public ResponseEntity<?> createPersonalContact(Map<?, ?> data, HttpServletRequest request) {
+        String requestURI=request.getRequestURI().replace("security/", "");
+        String queryString = request.getQueryString();
+        String fullURL = requestURI + (queryString != null ? "?" + queryString : "");
         return null;
     }
 
     @Override
+    @PutMapping("/personal-contact")
     public ResponseEntity<?> updatePersonalContact(Map<?, ?> data, HttpServletRequest request) {
+        String requestURI=request.getRequestURI().replace("security/", "");
+        String queryString = request.getQueryString();
+        String fullURL = requestURI + (queryString != null ? "?" + queryString : "");
         return null;
     }
 
     @Override
+    @DeleteMapping("/personal-contact")
     public ResponseEntity<?> deletePersonalContact(Map<?, ?> data, HttpServletRequest request) {
+        String requestURI=request.getRequestURI().replace("security/", "");
+        String queryString = request.getQueryString();
+        String fullURL = requestURI + (queryString != null ? "?" + queryString : "");
         return null;
     }
 
