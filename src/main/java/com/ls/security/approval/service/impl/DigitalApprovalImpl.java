@@ -1,7 +1,9 @@
 package com.ls.security.approval.service.impl;
 
+import com.ls.security.approval.dto.DigitalApprovalDTO;
 import com.ls.security.approval.service.DigitalApprovalService;
 import com.ls.security.global.user.dto.UserDTO;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Map;
 
 
@@ -41,6 +44,20 @@ public class DigitalApprovalImpl implements DigitalApprovalService {
                 .bodyValue(data)
                 .retrieve()
                 .bodyToMono(ResponseEntity.class)
+                .block();
+    }
+
+    @Override
+    public List<DigitalApprovalDTO> digitalApprovalAllList(String URI) {
+        WebClient webClient = WebClient.builder()
+                .baseUrl("http://localhost:9000")
+                .build();
+
+        return webClient.get()
+                .uri(URI)
+                .accept(MediaType.APPLICATION_JSON)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<DigitalApprovalDTO>>() {})
                 .block();
     }
 }
